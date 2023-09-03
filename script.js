@@ -1,7 +1,13 @@
 document.getElementById('btn').addEventListener('click' , loadData);
-
+var input = document.getElementById("myInput");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("btn").click();
+  }
+});
 function loadData(){
-    var see = document.getElementById("username").value;
+    var see = document.getElementById("myInput").value;
     console.log(see);
     var xhr = new XMLHttpRequest();
     xhr.open('GET',`https://codeforces.com/api/user.info?handles=${see}`,true);
